@@ -98,6 +98,7 @@
     <Content Include="Content\images\avatar_1.jpg" />
     <Content Include="Content\images\avatar_2.jpg" />
     <Content Include="Content\images\avatar_3.jpg" />
+    <Content Include="Content\images\BilgeAdam.jpg" />
     <Content Include="Content\images\blog.jpg" />
     <Content Include="Content\images\calendar.png" />
     <Content Include="Content\images\donation.jpg" />
@@ -120,11 +121,10 @@
     <Content Include="Content\images\gallery_7.jpg" />
     <Content Include="Content\images\gallery_8.jpg" />
     <Content Include="Content\images\gallery_9.jpg" />
-    <Content Include="Content\images\index.jpg" />
     <Content Include="Content\images\latest.jpg" />
     <Content Include="Content\images\location.png" />
+    <Content Include="Content\images\logo-2.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\logo_2.png" />
     <Content Include="Content\images\marker.png" />
     <Content Include="Content\images\mission.jpg" />
     <Content Include="Content\images\news_1.jpg" />
@@ -145,11 +145,15 @@
     <Content Include="Content\images\sermon_4.jpg" />
     <Content Include="Content\images\sermon_5.jpg" />
     <Content Include="Content\images\sermon_6.jpg" />
+    <Content Include="Content\images\signin-image.jpg" />
+    <Content Include="Content\images\signup-image.jpg" />
     <Content Include="Content\images\team_1.jpg" />
     <Content Include="Content\images\team_2.jpg" />
     <Content Include="Content\images\team_3.jpg" />
     <Content Include="Content\images\top_bar.jpg" />
     <Content Include="Content\images\upcoming.jpg" />
+    <Content Include="Content\jquery\jquery-ui.min.js" />
+    <Content Include="Content\jquery\jquery.min.js" />
     <Content Include="Content\js\about.js" />
     <Content Include="Content\js\blog.js" />
     <Content Include="Content\js\blog_single.js" />
@@ -157,6 +161,7 @@
     <Content Include="Content\js\custom.js" />
     <Content Include="Content\js\events.js" />
     <Content Include="Content\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\js\main.js" />
     <Content Include="Content\js\sermons.js" />
     <Content Include="Content\plugins\colorbox\colorbox.css" />
     <Content Include="Content\plugins\colorbox\images\border.png" />
@@ -186,6 +191,11 @@
     <Content Include="Content\styles\blog_responsive.css" />
     <Content Include="Content\styles\blog_single.css" />
     <Content Include="Content\styles\blog_single_responsive.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-grid.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-grid.min.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-reboot.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-reboot.min.css" />
+    <Content Include="Content\styles\bootstrap4\bootstrap.css" />
     <Content Include="Content\styles\bootstrap4\bootstrap.min.css" />
     <Content Include="Content\styles\bootstrap4\bootstrap.min.js" />
     <Content Include="Content\styles\bootstrap4\popper.js" />
@@ -197,6 +207,7 @@
     <Content Include="Content\styles\responsive.css" />
     <Content Include="Content\styles\sermons.css" />
     <Content Include="Content\styles\sermons_responsive.css" />
+    <Content Include="Content\styles\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -244,6 +255,13 @@
     <Content Include="Content\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
     <Content Include="Content\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
     <Content Include="Content\plugins\font-awesome-4.7.0\scss\_variables.scss" />
+    <Content Include="Content\styles\style.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-grid.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-grid.min.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-reboot.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap.css.map" />
+    <Content Include="Content\styles\bootstrap4\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\_LayoutPage1.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

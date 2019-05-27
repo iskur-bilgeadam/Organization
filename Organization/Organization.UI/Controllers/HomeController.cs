@@ -25,8 +25,16 @@ namespace Organization.UI.Controllers
         [HttpPost]
         public ActionResult Register(Users User)
         {
-            userBLL.AddUser(User);
-            return RedirectToAction("Index");
+            if (User.Password==User.RePassword)
+            {
+                userBLL.AddUser(User);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return RedirectToAction("Hata");
+            }
+            
         }
 
         public ActionResult Login()
@@ -59,6 +67,11 @@ namespace Organization.UI.Controllers
 
             }
 
+        }
+        public ActionResult Logout()
+        {
+            Session["Login"] = null;
+            return RedirectToAction("Login");
         }
         public ActionResult Hata()
         {
