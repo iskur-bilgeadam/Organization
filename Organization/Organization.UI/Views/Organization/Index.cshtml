@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Organization.ENTITY.Organizations>
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+<hr />
+&nbsp;&nbsp;&nbsp;<a href="/Organization/Create" class="btn btn-warning">Create Organization</a>
+<hr />
+<!-- Latest News -->
+
+<div class="news">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title_container text-center">
+                    <div class="section_title">En Yeni Organizasyonlar</div>
+                    <div class="section_subtitle">Be part of a community of people experiencing God together.</div>
+                </div>
+            </div>
+        </div>
+        <div class="row news_row">
+            @foreach (var item in Model)
+            {
+                <!-- News Post -->
+                <div class="col-xl-4 col-lg-6 news_post_col">
+                    <div class="news_post">
+                        <div class="news_post_content">
+                            <div class="news_post_title">
+                                <a href="/Organization/Detail/@item.OrganizationID">@item.Name</a>
+                            </div>
+                            <div class="news_post_meta">
+                                <ul>
+                                    <li><i class="fa fa-user" aria-hidden="true"></i><a href="#">@item.Users.FirstName</a></li>
+                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i><a href="#">@item.OrganizationDate</a></li>
+                                    <li><i class="fa fa-comment" aria-hidden="true"></i><a href="#">@item.TotalofUsers</a></li>
+
+                                </ul>
+                            </div>
+                          
+                           
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+    </div>
+</div>

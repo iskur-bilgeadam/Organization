@@ -5,7 +5,6 @@ namespace Organization.DAL
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
     using Organization.ENTITY;
-    using System.Collections.Generic;
 
     public partial class DataContext : DbContext
     {
@@ -14,7 +13,7 @@ namespace Organization.DAL
         {
         }
 
-        public virtual ISet<Messages> Messages { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
         public virtual DbSet<OrganizationsUsers> OrganizationsUsers { get; set; }
         public virtual DbSet<Users> Users { get; set; }

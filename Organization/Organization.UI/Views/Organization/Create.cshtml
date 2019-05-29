@@ -1,0 +1,61 @@
+﻿@model Organization.ENTITY.Organizations
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-horizontal">
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.Name, new { placeholder = "Organization Name" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.OrganizationDate, new { placeholder = "Organization Date" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.AppealDate, new { placeholder = "Appeal Date" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.TotalofUsers, new { placeholder = "Number of Users" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-warning" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="margin-top:70px;">             
+                <figure>
+                    <img src="~/Content/images/Activity.jpg" alt="Activity Image"/>
+                </figure>
+            </div>
+        </div>
+    </div>
+    
+ 
+</section>
+}
+<br />

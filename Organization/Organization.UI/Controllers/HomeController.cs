@@ -1,5 +1,6 @@
 ﻿using Organization.BLL;
 using Organization.ENTITY;
+using Organization.UI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,30 @@ namespace Organization.UI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(Users User)
+        public ActionResult Register(RegisterModel model)
         {
-            if (User.Password==User.RePassword)
+            if (ModelState.IsValid)
             {
-                userBLL.AddUser(User);
+                Users user = userBLL.GetUser(model.Mail);
+                if (user != null)
+                {
+                    ModelState.AddModelError("", "Bu Mail Kullanılıyor.");
+                    return View(model);
+                }
+                Users newUser = new Users
+                {
+                    E_mail = model.Mail,
+                    FirstName = model.FullName,
+                    Password = model.Password,
+                    Phone = model.Phone
+                };
+
+                userBLL.AddUser(newUser);
+                Session["Login"] = newUser;
                 return RedirectToAction("Index");
             }
-            else
-            {
-                return RedirectToAction("Hata");
-            }
-            
+
+            return View(model);
         }
 
         public ActionResult Login()
@@ -63,7 +76,7 @@ namespace Organization.UI.Controllers
             }
             else
             {
-                return RedirectToAction("Hata"); 
+                return RedirectToAction("Hata");
 
             }
 

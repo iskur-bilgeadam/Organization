@@ -15,6 +15,7 @@ namespace Organization.BLL
         {
             return db.Users.ToList();
         }
+
         public Users GetUser(string email)
         {
             return db.Users.FirstOrDefault(x=>x.E_mail==email);

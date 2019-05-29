@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Organization.ENTITY.OrganizationsUsers>
+
+@{
+    ViewBag.Title = "MyOrganization";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>My Organizations</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Organizations.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Users.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Organizations.OrganizationDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizations.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizations.Users.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Organizations.OrganizationDate)
+        </td>
+        <td>
+           <a href="/Organization/LeaveOrganization/@item.UserID" class="btn btn-sm btn-warning">Leave</a>
+        </td>
+    </tr>
+}
+
+</table>

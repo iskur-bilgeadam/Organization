@@ -25,11 +25,10 @@ namespace Organization.ENTITY
 
         public DateTime AppealDate { get; set; }
 
-        public int NumberofUsers { get; set; }
+        [StringLength(250)]
+        public string Image { get; set; }
 
-        [Column(TypeName = "image")]
-        [Required]
-        public byte[] Image { get; set; }
+        public int TotalofUsers { get; set; }
 
         public int UserID { get; set; }
 

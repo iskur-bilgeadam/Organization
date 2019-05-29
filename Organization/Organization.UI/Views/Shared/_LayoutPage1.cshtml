@@ -86,7 +86,7 @@
                                     <ul class="main_nav">
                                         <li class="active"><a href="/Home/Index">home</a></li>
                                         <li><a href="about.html">about</a></li>
-                                        <li><a href="sermons.html">sermons</a></li>
+
 
                                         @if (Session["Login"] == null)
                                         {
@@ -96,8 +96,8 @@
                                         }
                                         else
                                         {
-                                            <li><a href="/Organization/Create/">Create Organization</a></li>
-                                            <li><a>@user.FirstName</a></li>
+                                            <li><a href="/Organization/Index/">Organizations</a></li>
+                                            <li><a href="/Organization/MyOrganization/">@user.FirstName</a></li>
                                             <li class="nav-item"><a href="/Home/Logout/">Log Out</a></li>
                                         }
 
@@ -218,4 +218,5 @@
     <script src="~/Content/js/main.js"></script>
     <script src="~/Content/jquery/jquery.min.js"></script>
 </body>
+
 </html>

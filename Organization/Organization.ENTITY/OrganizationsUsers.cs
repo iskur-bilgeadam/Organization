@@ -13,6 +13,8 @@ namespace Organization.ENTITY
 
         public int OrganizationID { get; set; }
 
+        public int? NumberofUsers { get; set; }
+
         public int UserID { get; set; }
 
         public DateTime Date { get; set; }
