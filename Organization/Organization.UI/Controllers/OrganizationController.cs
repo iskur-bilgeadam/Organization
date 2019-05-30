@@ -3,8 +3,10 @@ using Organization.ENTITY;
 using Organization.UI.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Organization.UI.Controllers
@@ -23,14 +25,28 @@ namespace Organization.UI.Controllers
             return View();
         }
 
-
-
         [HttpPost]
-        public ActionResult Create(Organizations org)
+        public ActionResult Create(Organizations org , HttpPostedFileBase Resim)
         {
             Users user = Session["Login"] as Users;
-            org.UserID = user.UserID;
-            organizationBLL.AddOrganization(org);
+            if (ModelState.IsValid)
+            {
+                if (Resim!=null)
+                {
+                    WebImage img = new WebImage(Resim.InputStream);
+                    FileInfo imginfo = new FileInfo(Resim.FileName);
+
+                    string newimg = Guid.NewGuid().ToString() + imginfo.Extension;
+
+                    img.Save("~/Content/images/Newimages/" + newimg);
+                    org.Image = "/Content/images/Newimages/" + newimg;
+                }
+
+                org.UserID = user.UserID;
+                organizationBLL.AddOrganization(org);
+                return RedirectToAction("Index");
+            }
+
             return RedirectToAction("Index");
         }
 
@@ -56,11 +72,9 @@ namespace Organization.UI.Controllers
             {
                 if (user.UserID == item.UserID && model.Organizations.OrganizationID == item.OrganizationID)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Detail", "Organization",new { id=model.Organizations.OrganizationID});
                 }
             }
-
-
             OrganizationsUsers organizationsUsers = new OrganizationsUsers
             {
                 OrganizationID = model.Organizations.OrganizationID,

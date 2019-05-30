@@ -25,7 +25,6 @@ namespace Organization.ENTITY
 
         public DateTime AppealDate { get; set; }
 
-        [StringLength(250)]
         public string Image { get; set; }
 
         public int TotalofUsers { get; set; }

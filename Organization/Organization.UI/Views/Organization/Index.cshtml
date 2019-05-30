@@ -1,10 +1,9 @@
 ﻿@model IEnumerable<Organization.ENTITY.Organizations>
 
 @{
-                /**/
 
-                ViewBag.Title = "Index";
-                Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 <hr />
 &nbsp;&nbsp;&nbsp;<a href="/Organization/Create" class="btn btn-warning">Create Organization</a>
@@ -27,6 +26,7 @@
                 <!-- News Post -->
                 <div class="col-xl-4 col-lg-6 news_post_col">
                     <div class="news_post">
+                        <div class="news_image"><img src="@item.Image" alt=""></div>
                         <div class="news_post_content">
                             <div class="news_post_title">
                                 <a href="/Organization/Detail/@item.OrganizationID">@item.Name</a>
@@ -39,15 +39,13 @@
 
                                 </ul>
                             </div>
-                          
-                           
+
+
                         </div>
                     </div>
                 </div>
 
             }
-
-
         </div>
     </div>
 </div>

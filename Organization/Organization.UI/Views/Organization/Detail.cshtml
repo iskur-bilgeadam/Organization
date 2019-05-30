@@ -1,4 +1,8 @@
-﻿@model Organization.UI.Models.OrganizationModel
+﻿@using Organization.BLL
+@using Organization.ENTITY
+
+
+@model Organization.UI.Models.OrganizationModel
 
 @{
     ViewBag.Title = "Detail";
@@ -20,7 +24,18 @@
     <link rel="stylesheet" type="text/css" href="~/Content/styles/blog_single_responsive.css">
 </head>
 <body>
+    @{ 
+        List<Messages> messages = new List<Messages>();
+        MessageBLL mbll = new MessageBLL();
 
+        Model.Messages = mbll.GetMessages();
+
+        foreach (var item in Model.Messages)
+        {
+            messages.Add(item);
+        }
+
+    }
     <div class="blog">
         <div class="container">
             <div class="row">
@@ -46,6 +61,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="social_and_tags d-flex flex-lg-row flex-column align-items-start justify-content-start">
                         <div class="blog_social">
                             <ul>
@@ -55,6 +71,7 @@
                                 <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                             </ul>
+
                         </div>
 
 
@@ -63,7 +80,7 @@
                             <ul>
                                 <li> <a class="btn btn-danger" data-toggle="modal" data-target="#myModal">Register Organization</a></li>
 
-                                <li><a href="#" class="btn btn-danger">Send Message</a></li>
+                                <li><a class="btn btn-danger" data-target="#MessagesModal" data-toggle="modal">Send Message</a></li>
                             </ul>
                             <!-- Modal -->
                             @using (Html.BeginForm("RegisterOrg", "Organization", FormMethod.Post))
@@ -78,16 +95,17 @@
                                                 <h4 class="modal-title">@Model.Organizations.Name</h4>
                                             </div>
                                             <div class="modal-body">
+
+
                                                 @Html.TextBoxFor(model => model.NumberofUsers, new { @class = "form-control", placeholder = "Kaç kişi katılacaksınız?" })
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-default" >Save</button>
+                                                <button type="submit" class="btn btn-default">Save</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             }
                         </div>
 
@@ -95,8 +113,79 @@
                 </div>
             </div>
 
+            <!-- Comments -->
+
+        <div class="row comments_row">
+            <div class="col">
+                <div class="comments">
+                    <div class="comments_title"><span>@Model.Messages.Count()</span> comments</div>
+                    <div class="comments_container">
+                        <ul class="comments_list">
+                            @foreach (Messages item in  messages)
+                            {
+                                <!-- Comment -->
+                                <li class="comment">
+                                    <div class="comment_container d-flex flex-row align-items-start justify-content-start">
+                          
+                                        <div class="comment_content">
+                                            <div class="comment_name"><a href="#">@item.Users.FirstName</a></div>
+                                            <div class="comment_time"><i class="fa fa-clock-o" aria-hidden="true"></i><span>@item.Date</span></div>
+                                            <div class="leave_comment_title">
+                                                <p>@item.Subject</p>
+                                            </div>
+                                            <div class="comment_text">
+                                                <p>@item.Body</p>
+                                            </div>
+                                            <div class="reply"><a href="#">reply</a></div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+            <!-- Leave your comment -->
+            @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+            {
+                <!-- Modal -->
+                <div class="modal fade" id="MessagesModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            @Html.HiddenFor(x => x.Organizations.OrganizationID)
+                            <div class="modal-body">
+                                <div class="row leave_comment_row">
+                                    <div class="col">
+                                        <div class="leave_comment">
+                                            <div class="leave_comment_title">Send Messages</div>
+                                            <div class="leave_comment_form_container">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        @Html.TextBoxFor(model => model.Message.Subject, new { @class = "form_input", placeholder = "Subject", required = "required" })
+                                                    </div>
+                                                    <div class="col-12">
+                                                        @Html.TextAreaFor(model => model.Message.Body, new { @class = "form_text", placeholder = "Your Message", required = "required" })
+                                                        <button type="submit" class="form_submit_button">Send Message</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            }
         </div>
     </div>
+
 
     <hr />
 </body>

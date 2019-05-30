@@ -26,5 +26,7 @@ namespace Organization.ENTITY
         public virtual Users Users { get; set; }
 
         public virtual Users Users1 { get; set; }
+
+        public DateTime? Date { get; set; }
     }
 }

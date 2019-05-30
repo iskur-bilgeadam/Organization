@@ -215,6 +215,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Filters\MyAuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -285,6 +286,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\images\Newimages\" />
+    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Organization.BLL\Organization.BLL.csproj">
