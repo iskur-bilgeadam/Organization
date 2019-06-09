@@ -1,5 +1,6 @@
 ﻿using Organization.BLL;
 using Organization.ENTITY;
+using Organization.UI.Filters;
 using Organization.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -81,11 +82,14 @@ namespace Organization.UI.Controllers
             }
 
         }
+
+        [MyAuthenticationFilter]
         public ActionResult Logout()
         {
             Session["Login"] = null;
             return RedirectToAction("Login");
         }
+        [MyAuthenticationFilter]
         public ActionResult Hata()
         {
             return View();

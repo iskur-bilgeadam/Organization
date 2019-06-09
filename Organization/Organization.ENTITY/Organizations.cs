@@ -23,6 +23,8 @@ namespace Organization.ENTITY
 
         public DateTime OrganizationDate { get; set; }
 
+        public string OrganizationPlace { get; set; }
+        
         public DateTime AppealDate { get; set; }
 
         public string Image { get; set; }

@@ -15,6 +15,8 @@ namespace Organization.ENTITY
 
         public int ReceiverID { get; set; }
 
+        public int OrgID { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Subject { get; set; }

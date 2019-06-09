@@ -1,4 +1,8 @@
-﻿@model IEnumerable<Organization.ENTITY.Organizations>
+﻿@using Organization.ENTITY
+@using Organization.BLL
+
+
+@model IEnumerable<Organization.ENTITY.Organizations>
 
 @{
 
@@ -23,6 +27,14 @@
         <div class="row news_row">
             @foreach (var item in Model)
             {
+                UserBLL userbll = new UserBLL();
+                OrganizationBLL organizationBLL = new OrganizationBLL();
+                Users user = null;
+                user = userbll.GetUser(item.Users.E_mail);
+                int num = organizationBLL.GetNumofUsers(item.OrganizationID);
+                bool durum = false;
+
+
                 <!-- News Post -->
                 <div class="col-xl-4 col-lg-6 news_post_col">
                     <div class="news_post">
@@ -35,11 +47,30 @@
                                 <ul>
                                     <li><i class="fa fa-user" aria-hidden="true"></i><a href="#">@item.Users.FirstName</a></li>
                                     <li><i class="fa fa-calendar-o" aria-hidden="true"></i><a href="#">@item.OrganizationDate</a></li>
-                                    <li><i class="fa fa-comment" aria-hidden="true"></i><a href="#">@item.TotalofUsers</a></li>
-
+                                    <li><i class="fa fa-comment" aria-hidden="true"></i><a href="#">Organizasyon Yeri:  @item.OrganizationPlace</a></li>
                                 </ul>
                             </div>
+                            <div class="news_post_meta">
+                                <ul>
+                                    <li>
+                                        @if (durum == true)
+                                        {
+                                            <a href="#" class="btn btn-success btn-sm">Katıldın</a>
+                                        }
+                                        else if (item.TotalofUsers != num)
+                                        {
+                                            <p>@num kişi bu organizasyona katılıyor.</p>
 
+                                        }
+                                        else
+                                        {
+                                            <a href="#" class="btn btn-danger btn-sm">FULL</a>
+                                        }
+
+                                    </li>
+                                </ul>
+                               
+                            </div>
 
                         </div>
                     </div>

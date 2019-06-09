@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/styles/responsive.css">
     <link href="~/Content/styles/bootstrap4/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/styles/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -85,17 +86,22 @@
                                 <nav class="main_nav_contaner ml-auto">
                                     <ul class="main_nav">
                                         <li class="active"><a href="/Home/Index">home</a></li>
-                                        <li><a href="about.html">about</a></li>
-
-
                                         @if (Session["Login"] == null)
                                         {
                                             <li><a href="/Home/Register/" class="btn btn-danger">Sign Up</a></li>
                                             <li><a href="/Home/Login/" class="btn btn-danger">Sign In</a></li>
-
                                         }
                                         else
                                         {
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Messages
+                                                </a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a class="dropdown-item" href="/Message/Incoming/">Incoming Messages</a>
+                                                    <a class="dropdown-item" href="/Message/Sent/">Sent Messages</a>
+                                                </div>
+                                            </li>
                                             <li><a href="/Organization/Index/">Organizations</a></li>
                                             <li><a href="/Organization/MyOrganization/">@user.FirstName</a></li>
                                             <li class="nav-item"><a href="/Home/Logout/">Log Out</a></li>

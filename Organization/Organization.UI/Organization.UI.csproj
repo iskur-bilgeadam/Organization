@@ -277,6 +277,9 @@
     <Content Include="Views\Organization\Create.cshtml" />
     <Content Include="Views\Organization\Detail.cshtml" />
     <Content Include="Views\Organization\MyOrganization.cshtml" />
+    <Content Include="Views\Message\Sent.cshtml" />
+    <Content Include="Views\Message\Incoming.cshtml" />
+    <Content Include="Views\Message\Reply.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -287,7 +290,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\images\Newimages\" />
-    <Folder Include="Views\Message\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Organization.BLL\Organization.BLL.csproj">

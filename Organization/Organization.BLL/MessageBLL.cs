@@ -8,22 +8,38 @@ using System.Threading.Tasks;
 
 namespace Organization.BLL
 {
-   public class MessageBLL
+    public class MessageBLL
     {
         DataContext db = new DataContext();
-        public List<Messages> GetMessages()
+        public List<Messages> GetMessages(int id)
         {
-            return db.Messages.ToList();
+            return db.Messages.Where(x=>x.OrgID==id).ToList();
+        }
+        public List<Messages> SentMessages(int id)
+        {
+            return db.Messages.Where(x =>x.SenderID==id).ToList();
+        }
+        public List<Messages> IncomingMessages(int id)
+        {
+            return db.Messages.Where(x => x.ReceiverID == id).ToList();
         }
 
-        public Messages GetMessages(int Id)
+        public List<Messages> GetMessage(int Id)
         {
-            return db.Messages.Where(x=>x.MessageID==Id).FirstOrDefault();
+            return db.Messages.Where(x => x.Users.UserID == Id).ToList();
         }
 
         public void AddMessage(Messages msj)
         {
-             db.Messages.Add(msj);
+
+            db.Messages.Add(msj);
+            db.SaveChanges();
+        }
+
+        public void Delete(int Id)
+        {
+            Messages messages = db.Messages.Where(x => x.MessageID == Id).FirstOrDefault();
+            db.Messages.Remove(messages);
             db.SaveChanges();
         }
 

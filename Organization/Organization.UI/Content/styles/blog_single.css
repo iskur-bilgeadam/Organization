@@ -447,7 +447,7 @@ section
 .comments_title
 {
 	margin-top: 39px;
-	font-size: 24px;
+	font-size: 22px;
 	text-transform: uppercase;
 	font-weight: 700;
 	color: #181818;
@@ -504,6 +504,8 @@ section
 .comment_name
 {
 	padding-left: 2px;
+    color:#8b0d0d;
+    font-size:28px;
 }
 .comment_name a
 {
@@ -532,12 +534,13 @@ section
 }
 .comment_text
 {
-	margin-top: 18px;
+	margin-top: 16px;
 }
 .comment_text p
 {
-	font-size: 16px;
+	font-size: 18px;
 	line-height: 1.5;
+    color:black;
 }
 .reply
 {
@@ -574,9 +577,9 @@ section
 }
 .leave_comment_title
 {
-	font-size: 24px;
-	font-weight: 700;
-	color: #181818;
+	font-size: 25px;
+	font-weight: 800;
+	color: black;
 	text-transform: uppercase;
 }
 .leave_comment_form_container

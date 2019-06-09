@@ -41,7 +41,12 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-10">
-                            <input type="file" name="Resim" id="Resim" accept=".PNG, .png,.JPG,.jpg,.JPEG,.jpeg,.gif" class="form-control"/>
+                            @Html.TextBoxFor(model => model.OrganizationPlace, new { placeholder = "Organization Place" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            <input type="file" name="Resim" id="Resim" accept=".PNG, .png,.JPG,.jpg,.JPEG,.jpeg,.gif" class="form-control" />
                         </div>
                     </div>
 

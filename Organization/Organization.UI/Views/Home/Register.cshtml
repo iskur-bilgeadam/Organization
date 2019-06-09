@@ -14,30 +14,31 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                        @Html.ValidationSummary(false)
                     <h2 class="form-title">Sign up</h2>
                     <form method="POST" class="register-form" id="register-form">
                         <div class="form-group">
                             <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             @Html.TextBoxFor(model => model.FullName, new { placeholder = "Your Name" })
+                            @Html.ValidationMessageFor(m => m.FullName, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="email"><i class="zmdi zmdi-email"></i></label>
                             @Html.TextBoxFor(model => model.Mail, new { placeholder = "E-Mail" })
+                            @Html.ValidationMessageFor(m => m.Mail, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="pass"><i class="zmdi zmdi-lock"></i></label>
                             @Html.TextBoxFor(model => model.Password, new { placeholder = "Password", type = "password" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
                         </div>
                         <div class="form-group">
                             <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                             @Html.TextBoxFor(model => model.RePassword, new { placeholder = "Repeat your password", type = "password" })
-                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "error" })
+                            @Html.ValidationMessageFor(m => m.RePassword, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
                             <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                             @Html.TextBoxFor(model => model.Phone, new { placeholder = "Phone Number" })
+                            @Html.ValidationMessageFor(m => m.Phone, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group form-button">
                             <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />

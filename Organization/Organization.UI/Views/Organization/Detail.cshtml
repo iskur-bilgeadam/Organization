@@ -27,13 +27,13 @@
     @{ 
         List<Messages> messages = new List<Messages>();
         MessageBLL mbll = new MessageBLL();
+        Users user = Session["Login"] as Users;
 
-        Model.Messages = mbll.GetMessages();
+        Model.Messages = mbll.GetMessages(Model.Organizations.OrganizationID);
 
-        foreach (var item in Model.Messages)
-        {
-            messages.Add(item);
-        }
+
+
+      
 
     }
     <div class="blog">
@@ -55,8 +55,7 @@
                             <div class="blog_post_meta">
                                 <ul>
                                     <li><i class="fa fa-user" aria-hidden="true"></i><a href="#">@Model.Organizations.Users.FirstName</a></li>
-                                    <li><i class="fa fa-comment" aria-hidden="true"></i><a href="#"><span>Total of Users : </span>@Model.Organizations.TotalofUsers</a></li>
-                                    <li><i class="fa fa-plus" aria-hidden="true"></i><a href="#"><span>Avaliable Place : </span>@Convert.ToInt32(Model.Organizations.TotalofUsers - Model.NumberofUsers)</a></li>
+                                    <li><i class="fa fa-comment" aria-hidden="true"></i><a href="#"><span>Kontenjan : </span>@Model.Organizations.TotalofUsers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,42 +111,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Comments -->
-
-        <div class="row comments_row">
-            <div class="col">
-                <div class="comments">
-                    <div class="comments_title"><span>@Model.Messages.Count()</span> comments</div>
-                    <div class="comments_container">
-                        <ul class="comments_list">
-                            @foreach (Messages item in  messages)
-                            {
-                                <!-- Comment -->
-                                <li class="comment">
-                                    <div class="comment_container d-flex flex-row align-items-start justify-content-start">
-                          
-                                        <div class="comment_content">
-                                            <div class="comment_name"><a href="#">@item.Users.FirstName</a></div>
-                                            <div class="comment_time"><i class="fa fa-clock-o" aria-hidden="true"></i><span>@item.Date</span></div>
-                                            <div class="leave_comment_title">
-                                                <p>@item.Subject</p>
-                                            </div>
-                                            <div class="comment_text">
-                                                <p>@item.Body</p>
-                                            </div>
-                                            <div class="reply"><a href="#">reply</a></div>
-                                        </div>
-                                    </div>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
             <!-- Leave your comment -->
             @using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
             {

@@ -1,5 +1,6 @@
 ﻿using Organization.BLL;
 using Organization.ENTITY;
+using Organization.UI.Filters;
 using Organization.UI.Models;
 using System;
 using System.Collections.Generic;
@@ -14,12 +15,16 @@ namespace Organization.UI.Controllers
     public class OrganizationController : Controller
     {
         OrganizationBLL organizationBLL = new OrganizationBLL();
+        MessageBLL mbll = new MessageBLL();
+
+        [MyAuthenticationFilter]
         public ActionResult Index()
         {
             List<Organizations> organizations = organizationBLL.GetOrganizations();
             return View(organizations);
         }
 
+        [MyAuthenticationFilter]
         public ActionResult Create()
         {
             return View();
@@ -50,7 +55,7 @@ namespace Organization.UI.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [MyAuthenticationFilter]
         public ActionResult Detail(int Id)
         {
             Organizations org = organizationBLL.GetOrganization(Id);
@@ -88,7 +93,7 @@ namespace Organization.UI.Controllers
             return RedirectToAction("Index");
         }
 
-
+        [MyAuthenticationFilter]
         public ActionResult MyOrganization()
         {
             Users user = Session["Login"] as Users;
@@ -96,6 +101,7 @@ namespace Organization.UI.Controllers
             return View(organize);
         }
 
+        [MyAuthenticationFilter]
         public ActionResult LeaveOrganization(int Id)
         {
             organizationBLL.DeleteUser(Id);

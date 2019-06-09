@@ -1,0 +1,55 @@
+﻿
+
+@model IEnumerable<Organization.ENTITY.Messages>
+
+@{
+    ViewBag.Title = "Incoming";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Incoming Messages</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Users1.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users1.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrgID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Body)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                <a class="btn btn-success" data-target="#MessagesModal" data-toggle="modal">Reply</a>
+            </td>
+        </tr>
+    }
+
+</table>

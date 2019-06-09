@@ -44,5 +44,21 @@ namespace Organization.BLL
             db.OrganizationsUsers.Remove(user);
             db.SaveChanges();
         }
+
+        public void Delete(int Id)
+        {
+            Organizations org = db.Organizations.FirstOrDefault(x => x.OrganizationID == Id);
+            db.Organizations.Remove(org);
+            db.SaveChanges();
+        }
+
+        public int GetNumofUsers(int Id)
+        {
+            if (db.OrganizationsUsers.Where(x => x.OrganizationID==Id).Sum(x=>x.NumberofUsers).HasValue)
+            {
+                return db.OrganizationsUsers.Where(x => x.OrganizationID == Id).Sum(x => x.NumberofUsers).Value;
+            }
+            return 0;
+        }
     }
 }
